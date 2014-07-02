@@ -69,7 +69,7 @@
 {
 	NSDictionary *finalJSON = @{@"company_id": self.token,
 								@"ids": self.customer,
-								@"campaings":campaings,
+								@"campaigns":campaings,
 								@"properties":properties};
 	
 	[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/campaigns/automated/evaluate"] :finalJSON completitionHandler:^(NSDictionary *result){
