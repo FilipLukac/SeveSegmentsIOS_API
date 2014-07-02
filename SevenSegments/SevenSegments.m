@@ -12,8 +12,6 @@
 
 - (id)initWithToken:(NSString *)token customerString:(NSString *)customer :(NSString*)projectId
 {
-	target = @"http://api.7segments.com";
-	
 	self = [super init];
 	if (self)
 	{
@@ -26,8 +24,6 @@
 
 - (id)initWithToken:(NSString *)token customerDict:(NSDictionary *)customer :(NSString*)projectId
 {
-	target = @"http://api.7segments.com";
-	
 	self = [super init];
 	if (self)
 	{
@@ -82,16 +78,6 @@
 	return [NSString stringWithFormat:@"%@%@", target, path];
 }
 
-
-- (void)setAuthorized:(BOOL)authorized
-{
-	self.tokenAuthorized = authorized;
-}
-
-- (BOOL)getAuthorized
-{
-	return self.tokenAuthorized;
-}
 
 - (void)MakeAsynchronousHTTPRequestWithResponse:(NSString *)url :(NSDictionary *)data completitionHandler:(void (^)(NSDictionary *result))completionHandler
 {
