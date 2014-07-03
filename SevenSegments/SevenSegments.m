@@ -43,9 +43,12 @@
 								@"project_id": self.projectId, // project id if defined, otherwise null
 								@"properties":properties == nil ? @{} : properties}; // properties
 	
-	[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/crm/events"] :finalJSON completitionHandler:^(NSDictionary *result){
-		NSLog(@"%@", result);
-	}];
+	if ([self hasInternetConnection])
+	{
+		[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/crm/events"] :finalJSON completitionHandler:^(NSDictionary *result){
+			NSLog(@"%@", result);
+		}];
+	}
 }
 
 - (void)update:(NSDictionary *)properties
@@ -54,11 +57,14 @@
 								@"company_id": self.token, // Token
 								@"properties":properties == nil ? @{} : properties}; // This is not gonna happend but for sure.
 	
-	[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/crm/customers"] :finalJSON completitionHandler:^(NSDictionary *result){
-		NSLog(@"%@", result);
-	}];
+	if ([self hasInternetConnection])
+	{
+		[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/crm/customers"] :finalJSON completitionHandler:^(NSDictionary *result){
+			NSLog(@"%@", result);
+		}];
+	}
 	
-	// Do something with json
+	
 }
 
 - (void)evaluate:(NSDictionary *)campaings :(NSDictionary *)properties
@@ -68,9 +74,12 @@
 								@"campaigns":campaings,
 								@"properties":properties};
 	
-	[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/campaigns/automated/evaluate"] :finalJSON completitionHandler:^(NSDictionary *result){
-		NSLog(@"%@", result);
-	}];
+	if ([self hasInternetConnection])
+	{
+		[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/campaigns/automated/evaluate"] :finalJSON completitionHandler:^(NSDictionary *result){
+			NSLog(@"%@", result);
+		}];
+	}
 }
 
 - (NSString*)url:(NSString *)path
@@ -122,5 +131,13 @@
 	
 	return jsonArray;
 }
+
+- (BOOL)hasInternetConnection
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return networkStatus != NotReachable;
+}
+
 @end
 

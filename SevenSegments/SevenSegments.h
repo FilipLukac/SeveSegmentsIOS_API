@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Reachability.h"
+
+
 
 
 #define target @"http://api.7segments.com" // Default target for our API
@@ -95,6 +98,9 @@
  */
 
 - (void)MakeAsynchronousHTTPRequestWithResponse:(NSString *)url :(NSDictionary *)data completitionHandler:(void (^)(NSDictionary *result))completionHandler;
+
+- (BOOL)hasInternetConnection;
+
 
 @property(strong, nonatomic, readwrite) NSString* token; // holding token
 @property(strong, nonatomic, readwrite) NSDictionary* customer; // holding customer

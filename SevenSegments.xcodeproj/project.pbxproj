@@ -23,6 +23,7 @@
 		780A0667196412C50036AE20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 780A0665196412C50036AE20 /* InfoPlist.strings */; };
 		780A0669196412C50036AE20 /* SevenSegmentsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 780A0668196412C50036AE20 /* SevenSegmentsTests.m */; };
 		780A0674196412D90036AE20 /* SevenSegments.m in Sources */ = {isa = PBXBuildFile; fileRef = 780A0673196412D90036AE20 /* SevenSegments.m */; };
+		78662F8C196561AD0087C82C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 78662F8B196561AD0087C82C /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		780A0668196412C50036AE20 /* SevenSegmentsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SevenSegmentsTests.m; sourceTree = "<group>"; };
 		780A0672196412D90036AE20 /* SevenSegments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SevenSegments.h; sourceTree = "<group>"; };
 		780A0673196412D90036AE20 /* SevenSegments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SevenSegments.m; sourceTree = "<group>"; };
+		78662F8A196561AD0087C82C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		78662F8B196561AD0087C82C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 		780A0640196412C40036AE20 /* SevenSegments */ = {
 			isa = PBXGroup;
 			children = (
+				78662F8A196561AD0087C82C /* Reachability.h */,
+				78662F8B196561AD0087C82C /* Reachability.m */,
 				780A0672196412D90036AE20 /* SevenSegments.h */,
 				780A0673196412D90036AE20 /* SevenSegments.m */,
 				780A0649196412C40036AE20 /* AppDelegate.h */,
@@ -262,6 +267,7 @@
 				780A0674196412D90036AE20 /* SevenSegments.m in Sources */,
 				780A064B196412C40036AE20 /* AppDelegate.m in Sources */,
 				780A0647196412C40036AE20 /* main.m in Sources */,
+				78662F8C196561AD0087C82C /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +482,7 @@
 				780A066E196412C50036AE20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		780A066F196412C50036AE20 /* Build configuration list for PBXNativeTarget "SevenSegmentsTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +491,7 @@
 				780A0671196412C50036AE20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
