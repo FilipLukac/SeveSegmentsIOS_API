@@ -97,9 +97,6 @@
  */
 
 
-- (BOOL)hasInternetConnection;
-
-
 @property(strong, nonatomic, readwrite) NSString* token; // holding token
 @property(strong, nonatomic, readwrite) NSDictionary* customer; // holding customer
 @property(strong, nonatomic, readwrite) NSString* projectId; // holding projectId
