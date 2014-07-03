@@ -33,6 +33,7 @@
 		NSString* token - Authorization token. Cannot be nil
 		NSString* customer - Customer String ( id )
 		NSString* projectId - Project ID	@return:
+	@return
 		id - an instance of @class SevenSegments ( object )
 	
  */
