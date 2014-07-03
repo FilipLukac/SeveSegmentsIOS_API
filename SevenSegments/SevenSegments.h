@@ -74,8 +74,6 @@
 		NSString - String contains target with path
  */
 
-- (NSString*)url :(NSString*)path;
-
 /*
  
 	MakeHTTPRequestWithResponse - Make synchronous request to url with json body
