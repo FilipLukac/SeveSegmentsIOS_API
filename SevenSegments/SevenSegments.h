@@ -86,7 +86,6 @@
 		NSDictionary - Returning array with response
  */
 
-- (NSDictionary*)MakeHTTPRequestWithResponse: (NSString*)url :(NSDictionary*)data;
 
 /*
 	MakeAsynchronousHTTPRequestWithResponse - Make non-blocking (asyncrhonous) request to url with json body
@@ -97,7 +96,6 @@
 		NSDictionary *result - response is passing to callback
  */
 
-- (void)MakeAsynchronousHTTPRequestWithResponse:(NSString *)url :(NSDictionary *)data completitionHandler:(void (^)(NSDictionary *result))completionHandler;
 
 - (BOOL)hasInternetConnection;
 
