@@ -32,10 +32,6 @@
 		785A363F197037EA006DE67A /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 785A3637197037EA006DE67A /* NSString+MKNetworkKitAdditions.m */; };
 		785A3640197037EA006DE67A /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 785A3639197037EA006DE67A /* UIAlertView+MKNetworkKitAdditions.m */; };
 		785A3641197037EA006DE67A /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 785A363B197037EA006DE67A /* UIImageView+MKNetworkKitAdditions.m */; };
-		785A364319703933006DE67A /* Reachability.h in Sources */ = {isa = PBXBuildFile; fileRef = 785A3624197037AA006DE67A /* Reachability.h */; };
-		785A364419703933006DE67A /* MKNetworkEngine.h in Sources */ = {isa = PBXBuildFile; fileRef = 785A3628197037DD006DE67A /* MKNetworkEngine.h */; };
-		785A364519703933006DE67A /* MKNetworkKit.h in Sources */ = {isa = PBXBuildFile; fileRef = 785A362A197037DD006DE67A /* MKNetworkKit.h */; };
-		785A364619703933006DE67A /* MKNetworkOperation.h in Sources */ = {isa = PBXBuildFile; fileRef = 785A362B197037DD006DE67A /* MKNetworkOperation.h */; };
 		785A3648197039AB006DE67A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A3647197039AB006DE67A /* Security.framework */; };
 		785A364A197039BD006DE67A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 785A3649197039BD006DE67A /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -341,10 +337,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				785A364319703933006DE67A /* Reachability.h in Sources */,
-				785A364419703933006DE67A /* MKNetworkEngine.h in Sources */,
-				785A364519703933006DE67A /* MKNetworkKit.h in Sources */,
-				785A364619703933006DE67A /* MKNetworkOperation.h in Sources */,
 				780A0654196412C40036AE20 /* ViewController.m in Sources */,
 				780A0674196412D90036AE20 /* SevenSegments.m in Sources */,
 				785A363D197037EA006DE67A /* NSData+MKBase64.m in Sources */,
