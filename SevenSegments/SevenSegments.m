@@ -52,7 +52,7 @@
 	[op addCompletionHandler:
      ^(MKNetworkOperation *operation)
      {
-		 [self completitionHandler:[operation responseJSON]];
+		 [self completitionHandler:operation];
      }
 	 errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
 	 {
@@ -74,7 +74,7 @@
 	[op addCompletionHandler:
      ^(MKNetworkOperation *operation)
      {
-		 [self completitionHandler:[operation responseJSON]];
+		 [self completitionHandler:operation];
      }
 				errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
 	 {
@@ -124,5 +124,7 @@
 {
 	NSLog(@"%@", error);
 }
+
+
 @end
 

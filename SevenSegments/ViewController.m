@@ -24,12 +24,12 @@
 	
 	
 	
+	
 	[sevenString update:@{@"first_name":@"Alexander", @"last_name":@"Pastornicky"}];
 	
 	// Initialize with token and customer dictionary - passing dictionary
 	
-	//SevenSegments *seventDict = [[SevenSegments alloc] initWit
-	//hToken:@"7fa0a2c4-fead-11e3-b648-4061862b98a0" customerDict:@{@"registered": @"1234"} :@"123"];
+	// SevenSegments *seventDict = [[SevenSegments alloc] initWithToken:@"7fa0a2c4-fead-11e3-b648-4061862b98a0" customerDict:@{@"registered": @"1234"} :@"123"];
 	
 	
 	
