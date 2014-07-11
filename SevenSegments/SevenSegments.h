@@ -67,6 +67,12 @@
 
 - (void) evaluate:(NSDictionary*)campaing :(NSDictionary*)properties;
 
+
+// Override those two methods for your purposes.
+
+- (void)completitionHandler:(MKNetworkOperation*)operation;
+- (void)errorHandler:(NSError*)error;
+
 // Helpers
 /*
 	url - Combine target with path
