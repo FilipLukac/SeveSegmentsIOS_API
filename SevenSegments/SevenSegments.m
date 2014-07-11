@@ -99,7 +99,7 @@
 	[op addCompletionHandler:
      ^(MKNetworkOperation *operation)
      {
-		 [self completitionHandler:[operation responseJSON]];
+		 [self completitionHandler:operation];
      }
 	errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
 	 {
@@ -117,64 +117,12 @@
 
 - (void)completitionHandler:(MKNetworkOperation*)operation
 {
-	
+	NSLog(@"%@", [operation responseJSON]);
 }
 
 - (void)errorHandler:(NSError*)error
 {
-	
+	NSLog(@"%@", error);
 }
-
-- (void)MakeAsynchronousHTTPRequestWithResponse:(NSString *)url :(NSDictionary *)data completitionHandler:(void (^)(NSDictionary *result))completionHandler
-{
-	NSURL *connectionUrl = [NSURL URLWithString:url];
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:connectionUrl
-														   cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-	NSError *error;
-	NSData *requestData = [NSJSONSerialization dataWithJSONObject:data
-														  options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-															error:&error];
-	
-	[request setHTTPMethod:@"POST"];
-	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-	[request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-	[request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
-	[request setHTTPBody: requestData];
-	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-		NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-		completionHandler(jsonArray);
-	}];
-}
-
-- (NSDictionary*)MakeHTTPRequestWithResponse:(NSString *)url :(NSDictionary *)data
-{
-	
-	NSURL *connectionUrl = [NSURL URLWithString:url];
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:connectionUrl
-														   cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-	NSError *error;
-	NSData *requestData = [NSJSONSerialization dataWithJSONObject:data
-														  options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-															error:&error];
-	
-	[request setHTTPMethod:@"POST"];
-	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-	[request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-	[request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
-	[request setHTTPBody: requestData];
-	NSURLResponse *urlResponse = nil;
-	NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-	NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:response1 options:kNilOptions error:&error];
-	
-	return jsonArray;
-}
-
-- (BOOL)hasInternetConnection
-{
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
-    return networkStatus != NotReachable;
-}
-
 @end
 
