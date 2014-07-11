@@ -18,6 +18,8 @@
 		self.token = token;
 		self.customer = @{@"registered":customer};
 		self.projectId = projectId == nil ? @"" : projectId;
+		
+		_engine = [[MKNetworkEngine alloc] initWithHostName:target];
 	}
 	return self;
 }
@@ -30,10 +32,11 @@
 		self.token = token;
 		self.customer = customer == nil ? @{} : customer;
 		self.projectId = projectId == nil ? @"" : projectId;
+		_engine = [[MKNetworkEngine alloc] initWithHostName:target];
+
 	}
 	return self;
 }
-
 
 - (void)track:(NSString *)event :(NSDictionary *)properties
 {
@@ -43,12 +46,20 @@
 								@"project_id": self.projectId, // project id if defined, otherwise null
 								@"properties":properties == nil ? @{} : properties}; // properties
 	
-	if ([self hasInternetConnection])
-	{
-		[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/crm/events"] :finalJSON completitionHandler:^(NSDictionary *result){
-			NSLog(@"%@", result);
-		}];
-	}
+ 	MKNetworkOperation *op = [_engine operationWithPath:@"/crm/events" params:finalJSON httpMethod:@"POST"];
+	op.postDataEncoding = MKNKPostDataEncodingTypeJSON;
+	[op setFreezable:TRUE];
+	[op addCompletionHandler:
+     ^(MKNetworkOperation *operation)
+     {
+		 [self completitionHandler:[operation responseJSON]];
+     }
+	 errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
+	 {
+		 [self errorHandler:error];
+	 }];
+	
+    [_engine enqueueOperation:op];
 }
 
 - (void)update:(NSDictionary *)properties
@@ -57,12 +68,20 @@
 								@"company_id": self.token, // Token
 								@"properties":properties == nil ? @{} : properties}; // This is not gonna happend but for sure.
 	
-	if ([self hasInternetConnection])
-	{
-		[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/crm/customers"] :finalJSON completitionHandler:^(NSDictionary *result){
-			NSLog(@"%@", result);
-		}];
-	}
+ 	MKNetworkOperation *op = [_engine operationWithPath:@"/crm/customers" params:finalJSON httpMethod:@"POST"];
+	op.postDataEncoding = MKNKPostDataEncodingTypeJSON;
+	[op setFreezable:TRUE];
+	[op addCompletionHandler:
+     ^(MKNetworkOperation *operation)
+     {
+		 [self completitionHandler:[operation responseJSON]];
+     }
+				errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
+	 {
+		 [self errorHandler:error];
+	 }];
+	
+    [_engine enqueueOperation:op];
 	
 	
 }
@@ -74,12 +93,20 @@
 								@"campaigns":campaings,
 								@"properties":properties};
 	
-	if ([self hasInternetConnection])
-	{
-		[self MakeAsynchronousHTTPRequestWithResponse:[self url:@"/campaigns/automated/evaluate"] :finalJSON completitionHandler:^(NSDictionary *result){
-			NSLog(@"%@", result);
-		}];
-	}
+	MKNetworkOperation *op = [_engine operationWithPath:@"/campaigns/automated/evaluate" params:finalJSON httpMethod:@"POST"];
+	op.postDataEncoding = MKNKPostDataEncodingTypeJSON;
+	[op setFreezable:TRUE];
+	[op addCompletionHandler:
+     ^(MKNetworkOperation *operation)
+     {
+		 [self completitionHandler:[operation responseJSON]];
+     }
+	errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
+	 {
+		 [self errorHandler:error];
+	 }];
+	
+    [_engine enqueueOperation:op];
 }
 
 - (NSString*)url:(NSString *)path
@@ -87,6 +114,16 @@
 	return [NSString stringWithFormat:@"%@%@", target, path];
 }
 
+
+- (void)completitionHandler:(MKNetworkOperation*)operation
+{
+	
+}
+
+- (void)errorHandler:(NSError*)error
+{
+	
+}
 
 - (void)MakeAsynchronousHTTPRequestWithResponse:(NSString *)url :(NSDictionary *)data completitionHandler:(void (^)(NSDictionary *result))completionHandler
 {

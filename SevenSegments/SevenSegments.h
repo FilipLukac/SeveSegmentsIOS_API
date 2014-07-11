@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "Reachability.h"
+#import "MKNetworkEngine.h"
 
 
 
 
-#define target @"http://api.7segments.com" // Default target for our API
+#define target @"api.7segments.com" // Default target for our API
 
 @interface SevenSegments : NSObject
 {
+	@private
+		MKNetworkEngine *_engine;
 }
 
 /*
@@ -63,7 +66,6 @@
 
 
 - (void) evaluate:(NSDictionary*)campaing :(NSDictionary*)properties;
-
 
 // Helpers
 /*
