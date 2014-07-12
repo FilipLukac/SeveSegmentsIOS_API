@@ -20,11 +20,10 @@
     [super viewDidLoad];
 	
 	// Initialize with token and customer ID - passing string
-	SevenSegments *sevenString = [[SevenSegments alloc] initWithToken:@"7fa0a2c4-fead-11e3-b648-4061862b98a0" customerString:@"3456" :nil];
+	SevenSegments *sevenString = [[SevenSegments alloc] initWithToken:@"7fa0a2c4-fead-11e3-b648-4061862b98a0" customerString:@"3456" projectId:nil];
 	
 	
-	
-	
+	[sevenString track:@"nakup" properties:@{@"key":@"object"}];
 	[sevenString update:@{@"first_name":@"Alexander", @"last_name":@"Pastornicky"}];
 	
 	// Initialize with token and customer dictionary - passing dictionary

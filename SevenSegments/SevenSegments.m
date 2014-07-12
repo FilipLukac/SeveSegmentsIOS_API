@@ -10,7 +10,7 @@
 
 @implementation SevenSegments
 
-- (id)initWithToken:(NSString *)token customerString:(NSString *)customer :(NSString*)projectId
+- (id)initWithToken:(NSString *)token customerString:(NSString *)customer projectId:(NSString*)projectId
 {
 	self = [super init];
 	if (self)
@@ -24,7 +24,7 @@
 	return self;
 }
 
-- (id)initWithToken:(NSString *)token customerDict:(NSDictionary *)customer :(NSString*)projectId
+- (id)initWithToken:(NSString *)token customerDict:(NSDictionary *)customer projectId:(NSString*)projectId
 {
 	self = [super init];
 	if (self)
@@ -38,7 +38,7 @@
 	return self;
 }
 
-- (void)track:(NSString *)event :(NSDictionary *)properties
+- (void)track:(NSString *)event properties:(NSDictionary *)properties
 {
 	NSDictionary *finalJSON = @{@"company_id": self.token, // Authorization Token
 								@"type":event, // Event name
@@ -86,7 +86,7 @@
 	
 }
 
-- (void)evaluate:(NSDictionary *)campaings :(NSDictionary *)properties
+- (void)evaluate:(NSDictionary *)campaings properties:(NSDictionary *)properties
 {
 	NSDictionary *finalJSON = @{@"company_id": self.token,
 								@"ids": self.customer,
@@ -108,12 +108,6 @@
 	
     [_engine enqueueOperation:op];
 }
-
-- (NSString*)url:(NSString *)path
-{
-	return [NSString stringWithFormat:@"%@%@", target, path];
-}
-
 
 - (void)completitionHandler:(MKNetworkOperation*)operation
 {

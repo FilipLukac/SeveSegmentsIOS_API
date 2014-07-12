@@ -31,7 +31,7 @@
 		id - an instance of @class SevenSegments ( object )
  */
 
-- (id) initWithToken:(NSString*)token customerString:(NSString *)customer :(NSString*)projectId;
+- (id) initWithToken:(NSString*)token customerString:(NSString *)customer projectId:(NSString*)projectId;
 
 /*
 	(id) initWithToken - initialize an instance with customer's array ( Dictionary of properties )
@@ -44,7 +44,7 @@
 	
  */
 
-- (id) initWithToken:(NSString*)token customerDict:(NSDictionary*)customer :(NSString*)projectId;
+- (id) initWithToken:(NSString*)token customerDict:(NSDictionary*)customer projectId:(NSString*)projectId;
 
 /*
 	track - Track events
@@ -53,7 +53,7 @@
 		NSDictionary* properties - Event properties
  */
 
-- (void) track:(NSString*)event :(NSDictionary*)properties;
+- (void) track:(NSString*)event properties:(NSDictionary*)properties;
 
 /*
 	update - Update customer's properties
@@ -65,7 +65,7 @@
 - (void) update:(NSDictionary*)properties;
 
 
-- (void) evaluate:(NSDictionary*)campaing :(NSDictionary*)properties;
+- (void) evaluate:(NSDictionary*)campaing properties:(NSDictionary*)properties;
 
 
 // Override those two methods for your purposes.
