@@ -1,3 +1,1 @@
-TODO:
-
-Make handler for offline mode
+7Segments api for iOS clients
