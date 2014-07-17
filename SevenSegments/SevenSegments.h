@@ -25,7 +25,7 @@
 	initWithToken - initialize an instance with customer string
 	@params:
 		NSString* token - Authorization token. Cannot be nil
-		NSString* customer - Customer String ( id )
+		NSString* customer - Customer String ( id ). Cannot be nil
 		NSString* projectId - Project ID
 	@return:
 		id - an instance of @class SevenSegments ( object )
@@ -52,7 +52,7 @@
 		NSString* event - Type or name of tracking event, cannot be nil
 		NSDictionary* properties - Event properties
  */
-
+- (void) track:(NSString*)event;
 - (void) track:(NSString*)event properties:(NSDictionary*)properties;
 
 /*
@@ -63,7 +63,6 @@
  */
 
 - (void) update:(NSDictionary*)properties;
-
 
 - (void) evaluate:(NSDictionary*)campaing properties:(NSDictionary*)properties;
 

@@ -62,6 +62,30 @@
     [_engine enqueueOperation:op];
 }
 
+- (void)track:(NSString *)event
+{
+	NSDictionary *finalJSON = @{@"company_id": self.token, // Authorization Token
+								@"type":event, // Event name
+								@"customer_ids": self.customer, // Customer ids specified in initialize
+								@"project_id": self.projectId, // project id if defined, otherwise null
+								@"properties":@{}}; // properties
+	
+ 	MKNetworkOperation *op = [_engine operationWithPath:@"/crm/events" params:finalJSON httpMethod:@"POST"];
+	op.postDataEncoding = MKNKPostDataEncodingTypeJSON;
+	[op setFreezable:TRUE];
+	[op addCompletionHandler:
+     ^(MKNetworkOperation *operation)
+     {
+		 [self completitionHandler:operation];
+     }
+				errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
+	 {
+		 [self errorHandler:error];
+	 }];
+	
+    [_engine enqueueOperation:op];
+}
+
 - (void)update:(NSDictionary *)properties
 {
 	NSDictionary *finalJSON = @{@"ids": self.customer,
@@ -76,7 +100,7 @@
      {
 		 [self completitionHandler:operation];
      }
-				errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
+	 errorHandler:^(MKNetworkOperation *errorOperation, NSError *error)
 	 {
 		 [self errorHandler:error];
 	 }];
